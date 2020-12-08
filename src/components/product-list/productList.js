@@ -22,11 +22,12 @@ export default class ProductList extends Component {
 }
 
 getDataSource(){
-  return ((this.state.filteredData != null && this.state.filteredData.length > 0) ? 
+  debugger;
+  return ((this.state.filteredData != null && this.state.filteredData.length > 0) ||
+  this.state.searchTerm.length > 0 ? 
   this.state.filteredData : this.state.datas);
 }
 sortData = (e)=>{
-  debugger;
   if(e.target.value === 'category'){
     this.setState({
       filteredData: 
@@ -59,7 +60,7 @@ sortData = (e)=>{
 
     editSearchTerm = (e)=>{
       this.setState({
-        editSearchTerm: e.target.value,
+        searchTerm: e.target.value,
         filteredData : e.target.value.length > 0 ?
          this.state.datas.filter(x=>x.title.toLowerCase().includes(e.target.value.toLowerCase())):
          this.state.datas
